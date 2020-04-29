@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Page_Control" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1T8-AK-3GZ">
+                                <rect key="frame" x="32" y="84" width="344" height="671"/>
+                            </imageView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="tWF-da-CxZ">
+                                <rect key="frame" x="160" y="802" width="97" height="37"/>
+                                <color key="pageIndicatorTintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="currentPageIndicatorTintColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1T8-AK-3GZ" secondAttribute="trailing" constant="38" id="6Oj-It-wlV"/>
+                            <constraint firstItem="1T8-AK-3GZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="7Oh-yb-ZH1"/>
+                            <constraint firstItem="tWF-da-CxZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="160" id="FkU-zm-MHg"/>
+                            <constraint firstItem="tWF-da-CxZ" firstAttribute="top" secondItem="1T8-AK-3GZ" secondAttribute="bottom" constant="47" id="QGk-m0-tn0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="tWF-da-CxZ" secondAttribute="trailing" constant="157" id="RLf-iQ-sMI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="1T8-AK-3GZ" secondAttribute="bottom" constant="107" id="cei-sy-xe1"/>
+                            <constraint firstItem="1T8-AK-3GZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="ly4-mr-8bH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="5Sc-vv-2lP" appends="YES" id="b1b-qe-gIx"/>
+                            <outletCollection property="gestureRecognizers" destination="fEL-OB-BtV" appends="YES" id="eaV-fq-Gc7"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="imageView" destination="1T8-AK-3GZ" id="vpP-Nf-Sf5"/>
+                        <outlet property="pageControl" destination="tWF-da-CxZ" id="zqV-qm-xby"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="right" id="5Sc-vv-2lP">
+                    <connections>
+                        <action selector="handleSwipeGesture:" destination="BYZ-38-t0r" id="RBL-sa-BUR"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="fEL-OB-BtV">
+                    <connections>
+                        <action selector="handleSwipeGesture:" destination="BYZ-38-t0r" id="diT-EZ-wBu"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="207" y="91"/>
+        </scene>
+    </scenes>
+</document>
