@@ -207,9 +207,13 @@ class ViewController: UIViewController {
             else if Loop_Style == LOOP.SINGLE{
                 playerItem.seek(to: CMTime.zero, completionHandler: nil)
             }
-            else {
-                // LOOP.RANDOM
-                count = Int.random(in: 0...source.count)
+            else if Loop_Style == LOOP.RANDOM{
+                // Will not random the same song
+                var rd = count
+                repeat {
+                    rd = Int.random(in: 0...source.count - 1)
+                } while(rd == count);
+                count = rd
                 play_music()
             }
         }
