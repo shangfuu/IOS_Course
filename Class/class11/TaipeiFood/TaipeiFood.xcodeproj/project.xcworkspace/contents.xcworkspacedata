@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:TaipeiFood.xcodeproj">
+      location = "self:/Users/shungfu/IOS_Course/Class/class11/TaipeiTravel/TaipeiFood.xcodeproj">
    </FileRef>
 </Workspace>

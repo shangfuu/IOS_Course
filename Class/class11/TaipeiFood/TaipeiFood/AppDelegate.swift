@@ -1,82 +1,116 @@
 //
 //  AppDelegate.swift
-//  TaipeiFood
+//  TaipeiTravel
 //
-//  Created by shungfu on 2020/5/21.
-//  Copyright © 2020 shungfu. All rights reserved.
+//  Created by joe feng on 2016/6/6.
+//  Copyright © 2016年 hsin. All rights reserved.
 //
 
 import UIKit
-import CoreData
+import CoreLocation
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
-
+class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
+    
+    var window: UIWindow?
+    var myLocationManager: CLLocationManager!
+    var myUserDefaults: UserDefaults!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        // 取得儲存的預設資料
+        self.myUserDefaults = UserDefaults.standard
+        
+        // 建立一個CLLocationManager
+        myLocationManager = CLLocationManager()
+        myLocationManager.delegate = self
+        myLocationManager.distanceFilter = kCLLocationAccuracyHundredMeters
+        myLocationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+        
+        // 首次使用，向使用者詢問定位自身位置權限
+        if CLLocationManager.authorizationStatus() == .notDetermined{
+            // 取得定位服務授權
+            myLocationManager.requestWhenInUseAuthorization()
+        }
+        else if CLLocationManager.authorizationStatus() == .denied {
+            // 設置定位權限的紀錄
+            self.myUserDefaults.set(false, forKey: "locationAuth")
+            self.myUserDefaults.synchronize()
+        }
+        else if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            // 設置定位權限的紀錄
+            self.myUserDefaults.set(true, forKey: "locationAuth")
+            
+            for type in ["hotel", "landmark", "park", "toilet"] {
+                self.myUserDefaults.set(0.0, forKey: "\(type)RecordLatitude")
+                self.myUserDefaults.set(0.0, forKey: "\(type)RecordLongtitude")
+            }
+            
+            self.myUserDefaults.synchronize()
+        }
+        
+        // 設定導覽列預設底色
+        UINavigationBar.appearance().barTintColor = UIColor.init(red: 0.24, green: 0.79, blue: 0.83, alpha: 1)
+        
+        // 設定導覽列按鈕顏色
+        UINavigationBar.appearance().tintColor = UIColor.black
+        
+        // 建立一個 UIWindow
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        
+        // 建立 UITabBarController
+        let myTabBar = UITabBarController()
+        
+        // 使用 NavigationController實作Detial切換頁面
+        // 建立 “景點” 頁面
+        let  landmarkViewController = UINavigationController(rootViewController: LandmarkMainViewController())
+        landmarkViewController.tabBarItem = UITabBarItem(title: "景點", image: UIImage(named: "landmark"), tag: 2000)
+        
+        // 建立 “公園” 頁面
+        let parkViewController = UINavigationController(rootViewController: ParkViewController())
+        parkViewController.tabBarItem = UITabBarItem(title: "公園", image: UIImage(named: "park"), tag: 300)
+        
+        // 建立 “廁所” 頁面
+        let toiletViewController = UINavigationController(rootViewController: ToiletViewController())
+        toiletViewController.tabBarItem = UITabBarItem(title: "廁所", image: UIImage(named: "toilet"), tag: 400)
+        
+        // 建立 “餐廳” 頁面
+        let foodViewController = UINavigationController(rootViewController: FoodViewController())
+        foodViewController.tabBarItem = UITabBarItem(title: "餐廳", image: UIImage(named: "hotel"), tag: 100)
+        
+        // 建立 “關於” 頁面
+        let infoViewController = UINavigationController(rootViewController: InfoViewController())
+        infoViewController.tabBarItem = UITabBarItem(title: "關於", image: UIImage(named: "info"), tag: 500)
+        
+        // 加入到 UITabBarController
+        myTabBar.viewControllers = [landmarkViewController, parkViewController, toiletViewController, foodViewController, infoViewController]
+        
+        // 設置根視圖控制器
+        self.window!.rootViewController = myTabBar
+        
+        // 將 UIWindow 設置為可見
+        self.window!.makeKeyAndVisible()
         return true
     }
-
-    // MARK: UISceneSession Lifecycle
-
-    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        // Called when a new scene session is being created.
-        // Use this method to select a configuration to create the new scene with.
-        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
-    }
-
-    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-        // Called when the user discards a scene session.
-        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
-    }
-
-    // MARK: - Core Data stack
-
-    lazy var persistentContainer: NSPersistentContainer = {
-        /*
-         The persistent container for the application. This implementation
-         creates and returns a container, having loaded the store for the
-         application to it. This property is optional since there are legitimate
-         error conditions that could cause the creation of the store to fail.
-        */
-        let container = NSPersistentContainer(name: "TaipeiFood")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                 
-                /*
-                 Typical reasons for an error here include:
-                 * The parent directory does not exist, cannot be created, or disallows writing.
-                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-                 * The device is out of space.
-                 * The store could not be migrated to the current model version.
-                 Check the error message to determine what the actual problem was.
-                 */
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
-        return container
-    }()
-
-    // MARK: - Core Data Saving support
-
-    func saveContext () {
-        let context = persistentContainer.viewContext
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-            }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == CLAuthorizationStatus.denied {
+            // 提示可至[設定]中開啟權限
+            let alertController = UIAlertController(title: "定位服務已關閉", message: "如要變更權限，請至 設定>隱私權>定位服務 開啟", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "確認", style: .default, handler: nil)
+            alertController.addAction(okAction)
+            
+            self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+            
+            // 設置定位權限的紀錄
+            self.myUserDefaults.set(false, forKey: "locationAuth")
+            self.myUserDefaults.synchronize()
+        }
+        else if (status == CLAuthorizationStatus.authorizedWhenInUse) {
+            self.myUserDefaults.set(true, forKey: "locationAuth")
+            self.myUserDefaults.synchronize()
         }
     }
-
+    
 }
 

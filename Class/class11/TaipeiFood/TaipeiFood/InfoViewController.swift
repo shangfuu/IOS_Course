@@ -1,14 +1,14 @@
 //
-//  infoViewController.swift
+//  InfoViewController.swift
 //  TaipeiFood
 //
-//  Created by shungfu on 2020/5/21.
-//  Copyright © 2020 shungfu. All rights reserved.
+//  Created by shungfu on 2020/5/26.
+//  Copyright © 2020 hsin. All rights reserved.
 //
 
 import UIKit
 
-class infoViewController: UIViewController {
+class InfoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
