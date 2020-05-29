@@ -7,63 +7,57 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4BA11AC0247C60C300F7B9FE /* LandmarkMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA11ABF247C60C300F7B9FE /* LandmarkMainViewController.swift */; };
-		4BA11AC2247C60D500F7B9FE /* ParkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA11AC1247C60D500F7B9FE /* ParkViewController.swift */; };
-		4BA11AC4247C60E200F7B9FE /* ToiletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA11AC3247C60E200F7B9FE /* ToiletViewController.swift */; };
-		4BA11AC6247C60F000F7B9FE /* FoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA11AC5247C60F000F7B9FE /* FoodViewController.swift */; };
-		4BA11AC8247C60FC00F7B9FE /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA11AC7247C60FC00F7B9FE /* InfoViewController.swift */; };
-		4BA11ACC247C61F200F7B9FE /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4BA11ACB247C61F200F7B9FE /* Default-568h@2x.png */; };
+		4B883FB22481457100D4D4E4 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B883FA62481457000D4D4E4 /* MapViewController.swift */; };
+		4B883FB32481457100D4D4E4 /* InfoMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B883FA72481457000D4D4E4 /* InfoMainViewController.swift */; };
+		4B883FB42481457100D4D4E4 /* LandmarkMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B883FA82481457000D4D4E4 /* LandmarkMainViewController.swift */; };
+		4B883FB52481457100D4D4E4 /* ToiletDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B883FA92481457000D4D4E4 /* ToiletDetailViewController.swift */; };
+		4B883FB62481457100D4D4E4 /* HotelMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B883FAA2481457000D4D4E4 /* HotelMainViewController.swift */; };
+		4B883FB72481457100D4D4E4 /* LandmarkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B883FAB2481457000D4D4E4 /* LandmarkDetailViewController.swift */; };
+		4B883FB82481457100D4D4E4 /* HotelDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B883FAC2481457000D4D4E4 /* HotelDetailViewController.swift */; };
+		4B883FB92481457100D4D4E4 /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B883FAD2481457000D4D4E4 /* Coordinate.swift */; };
+		4B883FBA2481457100D4D4E4 /* ParkMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B883FAE2481457100D4D4E4 /* ParkMainViewController.swift */; };
+		4B883FBB2481457100D4D4E4 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B883FAF2481457100D4D4E4 /* DetailViewController.swift */; };
+		4B883FBC2481457100D4D4E4 /* ToiletMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B883FB02481457100D4D4E4 /* ToiletMainViewController.swift */; };
+		4B883FBD2481457100D4D4E4 /* ParkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B883FB12481457100D4D4E4 /* ParkDetailViewController.swift */; };
+		4B883FC1248149A400D4D4E4 /* Nodle.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B883FC0248149A400D4D4E4 /* Nodle.png */; };
+		4B8CA1A524814E0C001A2DFE /* food.png in Resources */ = {isa = PBXBuildFile; fileRef = 4B8CA1A424814E0C001A2DFE /* food.png */; };
 		810E95F71D0715E400E80E64 /* toilet.png in Resources */ = {isa = PBXBuildFile; fileRef = 810E95F41D0715E400E80E64 /* toilet.png */; };
-		810E95F81D0715E400E80E64 /* toilet@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 810E95F51D0715E400E80E64 /* toilet@2x.png */; };
-		810E95F91D0715E400E80E64 /* toilet@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 810E95F61D0715E400E80E64 /* toilet@3x.png */; };
 		8180C1A523D6B3C70074CD3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8180C1A423D6B3C70074CD3F /* LaunchScreen.storyboard */; };
-		8180C1A723D6B41A0074CD3F /* Launch.png in Resources */ = {isa = PBXBuildFile; fileRef = 8180C1A623D6B41A0074CD3F /* Launch.png */; };
 		81A8A4401D054795005FA15C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A8A43F1D054795005FA15C /* AppDelegate.swift */; };
 		81A8A4421D054795005FA15C /* BaseMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A8A4411D054795005FA15C /* BaseMainViewController.swift */; };
 		81A8A4471D054795005FA15C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 81A8A4461D054795005FA15C /* Assets.xcassets */; };
 		81A8A4661D054E19005FA15C /* hotel.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A8A45A1D054E19005FA15C /* hotel.png */; };
-		81A8A4671D054E19005FA15C /* hotel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A8A45B1D054E19005FA15C /* hotel@2x.png */; };
-		81A8A4681D054E19005FA15C /* hotel@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A8A45C1D054E19005FA15C /* hotel@3x.png */; };
 		81A8A4691D054E19005FA15C /* landmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A8A45D1D054E19005FA15C /* landmark.png */; };
-		81A8A46A1D054E19005FA15C /* landmark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A8A45E1D054E19005FA15C /* landmark@2x.png */; };
-		81A8A46B1D054E19005FA15C /* landmark@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A8A45F1D054E19005FA15C /* landmark@3x.png */; };
 		81A8A46C1D054E19005FA15C /* park.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A8A4601D054E19005FA15C /* park.png */; };
-		81A8A46D1D054E19005FA15C /* park@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A8A4611D054E19005FA15C /* park@2x.png */; };
-		81A8A46E1D054E19005FA15C /* park@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81A8A4621D054E19005FA15C /* park@3x.png */; };
 		81C05AD01D06B2F400426344 /* info.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C05ACD1D06B2F400426344 /* info.png */; };
-		81C05AD11D06B2F400426344 /* info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C05ACE1D06B2F400426344 /* info@2x.png */; };
-		81C05AD21D06B2F400426344 /* info@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81C05ACF1D06B2F400426344 /* info@3x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4BA11ABF247C60C300F7B9FE /* LandmarkMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkMainViewController.swift; sourceTree = "<group>"; };
-		4BA11AC1247C60D500F7B9FE /* ParkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParkViewController.swift; sourceTree = "<group>"; };
-		4BA11AC3247C60E200F7B9FE /* ToiletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToiletViewController.swift; sourceTree = "<group>"; };
-		4BA11AC5247C60F000F7B9FE /* FoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
-		4BA11AC7247C60FC00F7B9FE /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
-		4BA11ACB247C61F200F7B9FE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		4B883FA62481457000D4D4E4 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		4B883FA72481457000D4D4E4 /* InfoMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoMainViewController.swift; sourceTree = "<group>"; };
+		4B883FA82481457000D4D4E4 /* LandmarkMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandmarkMainViewController.swift; sourceTree = "<group>"; };
+		4B883FA92481457000D4D4E4 /* ToiletDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToiletDetailViewController.swift; sourceTree = "<group>"; };
+		4B883FAA2481457000D4D4E4 /* HotelMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotelMainViewController.swift; sourceTree = "<group>"; };
+		4B883FAB2481457000D4D4E4 /* LandmarkDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandmarkDetailViewController.swift; sourceTree = "<group>"; };
+		4B883FAC2481457000D4D4E4 /* HotelDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotelDetailViewController.swift; sourceTree = "<group>"; };
+		4B883FAD2481457000D4D4E4 /* Coordinate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
+		4B883FAE2481457100D4D4E4 /* ParkMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkMainViewController.swift; sourceTree = "<group>"; };
+		4B883FAF2481457100D4D4E4 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		4B883FB02481457100D4D4E4 /* ToiletMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToiletMainViewController.swift; sourceTree = "<group>"; };
+		4B883FB12481457100D4D4E4 /* ParkDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParkDetailViewController.swift; sourceTree = "<group>"; };
+		4B883FC0248149A400D4D4E4 /* Nodle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Nodle.png; sourceTree = "<group>"; };
+		4B8CA1A424814E0C001A2DFE /* food.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = food.png; sourceTree = "<group>"; };
 		810E95F41D0715E400E80E64 /* toilet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toilet.png; sourceTree = "<group>"; };
-		810E95F51D0715E400E80E64 /* toilet@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toilet@2x.png"; sourceTree = "<group>"; };
-		810E95F61D0715E400E80E64 /* toilet@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toilet@3x.png"; sourceTree = "<group>"; };
 		8180C1A423D6B3C70074CD3F /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		8180C1A623D6B41A0074CD3F /* Launch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Launch.png; sourceTree = "<group>"; };
 		81A8A43C1D054795005FA15C /* TaipeiFood.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaipeiFood.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81A8A43F1D054795005FA15C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81A8A4411D054795005FA15C /* BaseMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMainViewController.swift; sourceTree = "<group>"; };
 		81A8A4461D054795005FA15C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		81A8A44B1D054795005FA15C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		81A8A45A1D054E19005FA15C /* hotel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hotel.png; sourceTree = "<group>"; };
-		81A8A45B1D054E19005FA15C /* hotel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hotel@2x.png"; sourceTree = "<group>"; };
-		81A8A45C1D054E19005FA15C /* hotel@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hotel@3x.png"; sourceTree = "<group>"; };
 		81A8A45D1D054E19005FA15C /* landmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = landmark.png; sourceTree = "<group>"; };
-		81A8A45E1D054E19005FA15C /* landmark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "landmark@2x.png"; sourceTree = "<group>"; };
-		81A8A45F1D054E19005FA15C /* landmark@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "landmark@3x.png"; sourceTree = "<group>"; };
 		81A8A4601D054E19005FA15C /* park.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = park.png; sourceTree = "<group>"; };
-		81A8A4611D054E19005FA15C /* park@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "park@2x.png"; sourceTree = "<group>"; };
-		81A8A4621D054E19005FA15C /* park@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "park@3x.png"; sourceTree = "<group>"; };
 		81C05ACD1D06B2F400426344 /* info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info.png; sourceTree = "<group>"; };
-		81C05ACE1D06B2F400426344 /* info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info@2x.png"; sourceTree = "<group>"; };
-		81C05ACF1D06B2F400426344 /* info@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "info@3x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +74,6 @@
 		81A8A4331D054795005FA15C = {
 			isa = PBXGroup;
 			children = (
-				4BA11ACB247C61F200F7B9FE /* Default-568h@2x.png */,
 				81A8A43E1D054795005FA15C /* TaipeiFood */,
 				81A8A43D1D054795005FA15C /* Products */,
 			);
@@ -99,16 +92,23 @@
 			children = (
 				81A8A43F1D054795005FA15C /* AppDelegate.swift */,
 				81A8A4411D054795005FA15C /* BaseMainViewController.swift */,
-				8180C1A623D6B41A0074CD3F /* Launch.png */,
+				4B883FAD2481457000D4D4E4 /* Coordinate.swift */,
+				4B883FAF2481457100D4D4E4 /* DetailViewController.swift */,
+				4B883FAC2481457000D4D4E4 /* HotelDetailViewController.swift */,
+				4B883FAA2481457000D4D4E4 /* HotelMainViewController.swift */,
+				4B883FA72481457000D4D4E4 /* InfoMainViewController.swift */,
+				4B883FAB2481457000D4D4E4 /* LandmarkDetailViewController.swift */,
+				4B883FC0248149A400D4D4E4 /* Nodle.png */,
+				4B883FA82481457000D4D4E4 /* LandmarkMainViewController.swift */,
+				4B883FA62481457000D4D4E4 /* MapViewController.swift */,
+				4B883FB12481457100D4D4E4 /* ParkDetailViewController.swift */,
+				4B883FAE2481457100D4D4E4 /* ParkMainViewController.swift */,
+				4B883FA92481457000D4D4E4 /* ToiletDetailViewController.swift */,
+				4B883FB02481457100D4D4E4 /* ToiletMainViewController.swift */,
 				81A8A4461D054795005FA15C /* Assets.xcassets */,
 				81A8A4591D054E19005FA15C /* icons */,
 				81A8A44B1D054795005FA15C /* Info.plist */,
 				8180C1A423D6B3C70074CD3F /* LaunchScreen.storyboard */,
-				4BA11ABF247C60C300F7B9FE /* LandmarkMainViewController.swift */,
-				4BA11AC1247C60D500F7B9FE /* ParkViewController.swift */,
-				4BA11AC3247C60E200F7B9FE /* ToiletViewController.swift */,
-				4BA11AC5247C60F000F7B9FE /* FoodViewController.swift */,
-				4BA11AC7247C60FC00F7B9FE /* InfoViewController.swift */,
 			);
 			path = TaipeiFood;
 			sourceTree = "<group>";
@@ -117,20 +117,11 @@
 			isa = PBXGroup;
 			children = (
 				81A8A45A1D054E19005FA15C /* hotel.png */,
-				81A8A45B1D054E19005FA15C /* hotel@2x.png */,
-				81A8A45C1D054E19005FA15C /* hotel@3x.png */,
 				81A8A45D1D054E19005FA15C /* landmark.png */,
-				81A8A45E1D054E19005FA15C /* landmark@2x.png */,
-				81A8A45F1D054E19005FA15C /* landmark@3x.png */,
+				4B8CA1A424814E0C001A2DFE /* food.png */,
 				81C05ACD1D06B2F400426344 /* info.png */,
-				81C05ACE1D06B2F400426344 /* info@2x.png */,
-				81C05ACF1D06B2F400426344 /* info@3x.png */,
 				810E95F41D0715E400E80E64 /* toilet.png */,
-				810E95F51D0715E400E80E64 /* toilet@2x.png */,
-				810E95F61D0715E400E80E64 /* toilet@3x.png */,
 				81A8A4601D054E19005FA15C /* park.png */,
-				81A8A4611D054E19005FA15C /* park@2x.png */,
-				81A8A4621D054E19005FA15C /* park@3x.png */,
 			);
 			path = icons;
 			sourceTree = "<group>";
@@ -163,7 +154,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 1130;
-				ORGANIZATIONNAME = hsin;
+				ORGANIZATIONNAME = B10615045;
 				TargetAttributes = {
 					81A8A43B1D054795005FA15C = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -195,25 +186,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81C05AD21D06B2F400426344 /* info@3x.png in Resources */,
 				81A8A4661D054E19005FA15C /* hotel.png in Resources */,
 				81A8A46C1D054E19005FA15C /* park.png in Resources */,
-				81A8A46D1D054E19005FA15C /* park@2x.png in Resources */,
 				81A8A4691D054E19005FA15C /* landmark.png in Resources */,
-				81A8A46B1D054E19005FA15C /* landmark@3x.png in Resources */,
-				81A8A4681D054E19005FA15C /* hotel@3x.png in Resources */,
 				8180C1A523D6B3C70074CD3F /* LaunchScreen.storyboard in Resources */,
-				81A8A46E1D054E19005FA15C /* park@3x.png in Resources */,
 				81A8A4471D054795005FA15C /* Assets.xcassets in Resources */,
-				810E95F91D0715E400E80E64 /* toilet@3x.png in Resources */,
-				81A8A46A1D054E19005FA15C /* landmark@2x.png in Resources */,
-				4BA11ACC247C61F200F7B9FE /* Default-568h@2x.png in Resources */,
-				8180C1A723D6B41A0074CD3F /* Launch.png in Resources */,
+				4B8CA1A524814E0C001A2DFE /* food.png in Resources */,
 				81C05AD01D06B2F400426344 /* info.png in Resources */,
-				81C05AD11D06B2F400426344 /* info@2x.png in Resources */,
 				810E95F71D0715E400E80E64 /* toilet.png in Resources */,
-				81A8A4671D054E19005FA15C /* hotel@2x.png in Resources */,
-				810E95F81D0715E400E80E64 /* toilet@2x.png in Resources */,
+				4B883FC1248149A400D4D4E4 /* Nodle.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,13 +205,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4BA11AC2247C60D500F7B9FE /* ParkViewController.swift in Sources */,
+				4B883FB82481457100D4D4E4 /* HotelDetailViewController.swift in Sources */,
+				4B883FB42481457100D4D4E4 /* LandmarkMainViewController.swift in Sources */,
 				81A8A4421D054795005FA15C /* BaseMainViewController.swift in Sources */,
-				4BA11AC0247C60C300F7B9FE /* LandmarkMainViewController.swift in Sources */,
-				4BA11AC8247C60FC00F7B9FE /* InfoViewController.swift in Sources */,
+				4B883FBB2481457100D4D4E4 /* DetailViewController.swift in Sources */,
+				4B883FB52481457100D4D4E4 /* ToiletDetailViewController.swift in Sources */,
+				4B883FB22481457100D4D4E4 /* MapViewController.swift in Sources */,
+				4B883FB62481457100D4D4E4 /* HotelMainViewController.swift in Sources */,
+				4B883FBA2481457100D4D4E4 /* ParkMainViewController.swift in Sources */,
+				4B883FB72481457100D4D4E4 /* LandmarkDetailViewController.swift in Sources */,
+				4B883FBC2481457100D4D4E4 /* ToiletMainViewController.swift in Sources */,
 				81A8A4401D054795005FA15C /* AppDelegate.swift in Sources */,
-				4BA11AC6247C60F000F7B9FE /* FoodViewController.swift in Sources */,
-				4BA11AC4247C60E200F7B9FE /* ToiletViewController.swift in Sources */,
+				4B883FB32481457100D4D4E4 /* InfoMainViewController.swift in Sources */,
+				4B883FB92481457100D4D4E4 /* Coordinate.swift in Sources */,
+				4B883FBD2481457100D4D4E4 /* ParkDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -346,12 +334,13 @@
 		81A8A44F1D054795005FA15C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				DEVELOPMENT_TEAM = 42G68NKSB6;
 				INFOPLIST_FILE = "$(SRCROOT)/TaipeiFood/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = tw.hsin.TaipeiFood;
+				PRODUCT_BUNDLE_IDENTIFIER = tw.b10615045.TaipeiFood;
 				PRODUCT_NAME = TaipeiFood;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
@@ -361,12 +350,13 @@
 		81A8A4501D054795005FA15C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
 				DEVELOPMENT_TEAM = 42G68NKSB6;
 				INFOPLIST_FILE = "$(SRCROOT)/TaipeiFood/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = tw.hsin.TaipeiFood;
+				PRODUCT_BUNDLE_IDENTIFIER = tw.b10615045.TaipeiFood;
 				PRODUCT_NAME = TaipeiFood;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;

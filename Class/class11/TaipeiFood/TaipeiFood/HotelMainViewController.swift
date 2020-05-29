@@ -1,5 +1,5 @@
 //
-//  LandmarkMainViewController.swift
+//  HotelMainViewController.swift
 //  TaipeiTravel
 //
 //  Created by joe feng on 2016/6/6.
@@ -9,18 +9,18 @@
 import UIKit
 import CoreLocation
 
-class LandmarkMainViewController: BaseMainViewController {
+class HotelMainViewController: BaseMainViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // 導覽列標題
-        self.title = "景點"
+        self.title = "住宿"
         
         // 獲取類型
-        self.fetchType = "landmark"
+        self.fetchType = "hotel"
         
-        // 台北景點資料 ID
-        self.strTargetID = "36847f3f-deff-4183-a5bb-800737591de5"
+        // 台北住宿資料 ID
+        self.strTargetID = "6f4e0b9b-8cb1-4b1d-a5c4-febd90f62469" //&limit=3&offset=0"
         
         self.targetUrl = {
             do {
@@ -38,8 +38,6 @@ class LandmarkMainViewController: BaseMainViewController {
         let thisData = self.apiData[self.apiDataForDistance[index].index]
         let title = thisData["stitle"] as? String ?? ""
         let intro = thisData["xbody"] as? String ?? ""
-        let openTime = thisData["MEMO_TIME"] as? String ?? "無開放時間資訊"
-        let transportation = thisData["info"] as? String ?? "無交通資訊"
         let type = thisData["CAT2"] as? String ?? ""
         let address = thisData["address"] as? String ?? "無地址資訊"
         
@@ -58,18 +56,16 @@ class LandmarkMainViewController: BaseMainViewController {
             "intro" : intro as AnyObject,
             "type" : type as AnyObject,
             "address" : address as AnyObject,
-            "openTime" : openTime as AnyObject,
-            "transportation" : transportation as AnyObject,
             "latitude" : latitude as AnyObject,
             "longitude" : longitude as AnyObject,
-            ]
-        
+        ]
+
         print(info["title"] as? String ?? "NO Title")
 
-        let detailViewController = LandmarkDetailViewController()
+        let detailViewController = HotelDetailViewController()
         detailViewController.info = info
-
-        self.navigationController?.pushViewController(detailViewController, animated: true)
         
+        self.navigationController?.pushViewController(detailViewController, animated: true)
     }
+    
 }
