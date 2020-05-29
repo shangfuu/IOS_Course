@@ -13,7 +13,7 @@ class FoodDetailViewController: DetailViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.fetchType = "hotel"
+        self.fetchType = "food"
 
         let latitude = info["latitude"] as? Double ?? 0.0
         let longitude = info["longitude"] as? Double ?? 0.0

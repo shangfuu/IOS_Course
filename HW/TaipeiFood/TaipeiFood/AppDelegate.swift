@@ -67,12 +67,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         // 建立一個 UIWindow
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
-        // 建立 UITabBarController
+        // 建立 UITabBarController, DarkSlateGray:47 79 79, grey51: 130 130 130
         let myTabBar = UITabBarController()
+        myTabBar.tabBar.tintColor = UIColor.init(red: 47/255, green: 79/255, blue: 79/255, alpha: 1)
+        myTabBar.tabBar.backgroundColor = UIColor.init(red: 105/255, green: 105/255, blue: 105/255, alpha: 0.7)
         
         // 建立 公園 頁面
         let parkViewController = UINavigationController(rootViewController: ParkMainViewController())
-        parkViewController.tabBarItem = UITabBarItem(title: "公園", image: UIImage(named: "park"), tag: 300)
+        parkViewController.tabBarItem = UITabBarItem(title: "公園", image: UIImage(named: "park"), tag: 200)
         
         // 建立 食物 頁面
         let foodViewController = UINavigationController(rootViewController: FoodMainViewController())
@@ -80,7 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         // 建立 關於 頁面
         let infoViewController = UINavigationController(rootViewController: InfoMainViewController())
-        infoViewController.tabBarItem = UITabBarItem(title: "關於", image: UIImage(named: "info"), tag: 500)
+        infoViewController.tabBarItem = UITabBarItem(title: "關於", image: UIImage(named: "info"), tag: 300)
         
         // 加入到 UITabBarController
         myTabBar.viewControllers = [foodViewController, parkViewController, infoViewController]

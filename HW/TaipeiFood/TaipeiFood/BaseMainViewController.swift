@@ -8,8 +8,10 @@
 
 import UIKit
 import CoreLocation
+import MapKit
 
 class BaseMainViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, URLSessionDelegate, URLSessionDownloadDelegate {
+    
     var fullSize :CGSize!
     var myUserDefaults :UserDefaults!
     var myLocationManager :CLLocationManager!
@@ -31,6 +33,9 @@ class BaseMainViewController: UIViewController, CLLocationManagerDelegate, UITab
     // 有限數量資料的個數
     let limitNumber = 100
     
+    // 10 km
+    let UserLimit: Double! = 10000.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,9 +45,11 @@ class BaseMainViewController: UIViewController, CLLocationManagerDelegate, UITab
         // 取得儲存的預設資料
         self.myUserDefaults = UserDefaults.standard
         
-        // 導覽列樣式
+        // 導覽列樣式, LightSteelBlue4: 110 123 139
         self.view.backgroundColor = UIColor.white
-        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.init(red: 54/255, green: 54/255, blue: 54/255, alpha: 1)]
+        self.navigationController?.navigationBar.tintColor = UIColor.init(red: 54/255, green: 54/255, blue: 54/255, alpha: 1)
         
         // 建立一個 CLLocationManager
         myLocationManager = CLLocationManager()
@@ -63,7 +70,6 @@ class BaseMainViewController: UIViewController, CLLocationManagerDelegate, UITab
         myActivityIndicator.startAnimating()
         myActivityIndicator.hidesWhenStopped = true
         self.view.addSubview(myActivityIndicator)
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -114,7 +120,6 @@ class BaseMainViewController: UIViewController, CLLocationManagerDelegate, UITab
             // 如果資料已在設定天數內取得過 便直接建立 table
             self.addTable(self.targetUrl)
         }
-        
     }
     
     func addTable(_ filePath :URL?) {
@@ -124,8 +129,6 @@ class BaseMainViewController: UIViewController, CLLocationManagerDelegate, UITab
         
         // 建立 UITableView 並設置原點及尺寸
         self.myTableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.fullSize.width, height: self.fullSize.height - 113), style: .plain)
-        
-        //self.myTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
         // 設置委任對象
         self.myTableView.delegate = self
@@ -147,7 +150,7 @@ class BaseMainViewController: UIViewController, CLLocationManagerDelegate, UITab
     
     
 // MARK: CLLocationManagerDelegate Methods
-    
+    // 位置更新時觸發
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let currentLocation :CLLocation = locations[0] as CLLocation
         
@@ -167,7 +170,7 @@ class BaseMainViewController: UIViewController, CLLocationManagerDelegate, UITab
         }
     }
     
-    // 更改定位權限時執行
+    // 更改定位權限時觸發
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if (status == CLAuthorizationStatus.denied) {
             // 設置定位權限的紀錄
@@ -178,7 +181,7 @@ class BaseMainViewController: UIViewController, CLLocationManagerDelegate, UITab
             self.myUserDefaults.set(true, forKey: "locationAuth")
             
             // 更新記錄的座標 for 取得有限數量的資料
-            for type in ["hotel", "landmark", "park", "toilet"] {
+            for type in TABLIST {
                 self.myUserDefaults.set(0.0, forKey: "\(type)RecordLatitude")
                 self.myUserDefaults.set(0.0, forKey: "\(type)RecordLongitude")
             }
@@ -190,9 +193,7 @@ class BaseMainViewController: UIViewController, CLLocationManagerDelegate, UITab
         }
     }
     
-    
 // MARK: UITableViewDelegate methods
-    
     // 必須實作的方法：有幾個 cell
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.apiData.count
@@ -201,7 +202,6 @@ class BaseMainViewController: UIViewController, CLLocationManagerDelegate, UITab
     // 必須實作的方法：每個 cell 要顯示的內容
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // 取得 tableView 目前使用的 cell
-        //let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         var cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
         
         if cell == nil {
@@ -216,11 +216,10 @@ class BaseMainViewController: UIViewController, CLLocationManagerDelegate, UITab
         
         // 顯示的內容
         if let myLabel = cell!.textLabel {
-            if let title = thisData["stitle"] as? String {
+            
+            if let title = thisData["ParkName"] as? String {
                 myLabel.text = title as String
-            } else if let title = thisData["ParkName"] as? String {
-                myLabel.text = title as String
-            } else if let title = thisData["單位名稱"] as? String {
+            } else if let title = thisData["餐廳名稱"] as? String {
                 myLabel.text = title as String
             }
         }
@@ -238,22 +237,16 @@ class BaseMainViewController: UIViewController, CLLocationManagerDelegate, UITab
             
             // 這筆資料的座標
             var thisDataLatitude = 0.0
-            if let num = thisData["latitude"] as? String {
-                thisDataLatitude = Double(num)!
-            } else if let num = thisData["Latitude"] as? String {
-                thisDataLatitude = Double(num)!
-            } else if let num = thisData["緯度"] as? String {
-                thisDataLatitude = Double(num)!
+            var thisDataLongitude = 0.0
+            if let latit = thisData["Latitude"] as? String {
+                thisDataLatitude = Double(latit)!
+            }
+            if let longit = thisData["Longitude"] as? String {
+                thisDataLongitude = Double(longit)!
             }
             
-            var thisDataLongitude = 0.0
-            if let num = thisData["longitude"] as? String {
-                thisDataLongitude = Double(num)!
-            } else if let num = thisData["Longitude"] as? String {
-                thisDataLongitude = Double(num)!
-            } else if let num = thisData["經度"] as? String {
-                thisDataLongitude = Double(num)!
-            }
+            
+            
             if thisDataLatitude == 0.0 && thisDataLongitude == 0.0 {
                 cell!.detailTextLabel?.text = ""
             } else {
@@ -274,7 +267,6 @@ class BaseMainViewController: UIViewController, CLLocationManagerDelegate, UITab
                 cell!.detailTextLabel?.text = detail
             }
         }
-        
         return cell!
     }
     
@@ -288,7 +280,6 @@ class BaseMainViewController: UIViewController, CLLocationManagerDelegate, UITab
 
     
 // MARK: NSURLSessionDownloadDelegate Methods
-    
     // 下載完成
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
         do {
@@ -349,21 +340,14 @@ class BaseMainViewController: UIViewController, CLLocationManagerDelegate, UITab
     
     // 自資料取得緯度與經度
     func fetchLatitudeAndLongitudeFromData(_ data :AnyObject) -> (latitude:Double, longitude:Double) {
+        
         var latitude = 0.0
-        if let num = data["latitude"] as? String {
-            latitude = Double(num)!
-        } else if let num = data["Latitude"] as? String {
-            latitude = Double(num)!
-        } else if let num = data["緯度"] as? String {
+        var longitude = 0.0
+        
+        if let num = data["Latitude"] as? String {
             latitude = Double(num)!
         }
-        
-        var longitude = 0.0
-        if let num = data["longitude"] as? String {
-            longitude = Double(num)!
-        } else if let num = data["Longitude"] as? String {
-            longitude = Double(num)!
-        } else if let num = data["經度"] as? String {
+        if let num = data["Longitude"] as? String {
             longitude = Double(num)!
         }
         
@@ -423,15 +407,14 @@ class BaseMainViewController: UIViewController, CLLocationManagerDelegate, UITab
                     let tempCoordinate = self.apiDataForDistance[index]
                     let tempData = self.apiDataAll[tempCoordinate.index]
                     
-                    tempAPIData.append(tempData)
-                    
-                    let (latitude, longitude) = self.fetchLatitudeAndLongitudeFromData(tempData)
+                    if CLLocation(latitude: tempCoordinate.latitude, longitude: tempCoordinate.longitude).distance(from: userLocation) <= UserLimit{
+                        tempAPIData.append(tempData)
+                        
+                        let (latitude, longitude) = self.fetchLatitudeAndLongitudeFromData(tempData)
 
-                    tempAPIDataForDistance.append(
-                        Coordinate(
-                            index: index,
-                            latitude: latitude,
-                            longitude: longitude))
+                        tempAPIDataForDistance.append(
+                            Coordinate(index: index, latitude: latitude, longitude: longitude))
+                    }
                 }
                 
                 self.apiData = tempAPIData

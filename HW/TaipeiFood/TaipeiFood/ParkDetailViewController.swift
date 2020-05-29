@@ -34,7 +34,6 @@ class ParkDetailViewController: DetailViewController {
     
 
 // MARK: UITableViewDelegate methods
-    
     // 必須實作的方法：每一組有幾個 cell
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return hasMap ? 5 : 4

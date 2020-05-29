@@ -14,13 +14,13 @@ class FoodMainViewController: BaseMainViewController {
         super.viewDidLoad()
         
         // 導覽列標題
-        self.title = "住宿"
+        self.title = "食物"
         
         // 獲取類型
-        self.fetchType = "hotel"
+        self.fetchType = "food"
         
-        // 台北住宿資料 ID
-        self.strTargetID = "6f4e0b9b-8cb1-4b1d-a5c4-febd90f62469" //&limit=3&offset=0"
+        // 台北美食資料 ID
+        self.strTargetID = "fdf50da3-b1ef-4dfe-86fe-4bebebec0bf5" //&limit=3&offset=0"
         
         self.targetUrl = {
             do {
