@@ -83,7 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         
         // 建立 住宿 頁面
         let hotelViewController = UINavigationController(rootViewController: HotelMainViewController())
-        hotelViewController.tabBarItem = UITabBarItem(title: "住宿", image: UIImage(named: "food"), tag: 100)
+        hotelViewController.tabBarItem = UITabBarItem(title: "住宿", image: UIImage(named: "hotel"), tag: 100)
         
         // 建立 關於 頁面
         let infoViewController = UINavigationController(rootViewController: InfoMainViewController())
