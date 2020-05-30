@@ -144,17 +144,29 @@ class BaseMainViewController: UIViewController, CLLocationManagerDelegate, UITab
         // 新增 TextField
         let frame = CGRect(x: 10, y: 10, width: self.fullSize.width - 20, height: 40)
         myTextField = UITextField(frame: frame)
-        print("ADD TXTFIEDL")
         self.myTextField.frame = frame
         self.myTextField.delegate = self
         self.myTextField.text = ""
         self.myTextField.borderStyle = .roundedRect
-        self.myTextField.keyboardType = .numberPad
-        // Custom Done Cancle on number pad
-        self.myTextField.addDoneCancelToolbar(onDone: (target: self, action: #selector(updateUserLimit)))
         self.myTextField.isHidden = false
         self.myTextField.clearButtonMode = .whileEditing
-        self.myTextField.placeholder = "請輸入距離 (單位：公尺)"
+        self.myTextField.placeholder = "請輸入距離"
+        self.myTextField.keyboardType = .numberPad
+        
+        // Custom Done Cancle on number pad
+        self.myTextField.addDoneCancelToolbar(onDone: (target: self, action: #selector(updateUserLimit)))
+        
+        // Text Field right view
+        let rightView = UIView(frame: CGRect(x: 0, y: 0, width: 120, height: 40))
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: 120, height: 40))
+        label.text = "(單位：公尺)"
+        label.textColor = UIColor.lightGray
+        label.textAlignment = .center
+        rightView.addSubview(label)
+
+        self.myTextField.rightView = rightView
+        self.myTextField.rightViewMode = .unlessEditing
+        
         self.view.addSubview(myTextField)
         
         // 隱藏環狀進度條
@@ -433,10 +445,15 @@ class BaseMainViewController: UIViewController, CLLocationManagerDelegate, UITab
             
             // 超過限定距離才重新取得有限數量資料
             if userLocation.distance(from: recordLocation) > self.limitDistance {
-
-                // 更新使用者附近地點座標
-                updateLimitDistance(userLocation: userLocation)
                 
+                print("Refetch")
+                // 更新使用者附近地點座標
+                if self.myTextField != nil && self.myTextField.text!.isEmpty == true {
+                    self.apiData = self.apiDataAll
+                }
+                else {
+                    updateLimitDistance(userLocation: userLocation)
+                }
                 
                 // 更新記錄的座標
                 myUserDefaults.set(userLatitude, forKey: self.fetchType + "RecordLatitude")
@@ -477,7 +494,8 @@ class BaseMainViewController: UIViewController, CLLocationManagerDelegate, UITab
             let tempData = self.apiDataAll[tempCoordinate.index]
             
             // 只顯示更新後有在使用者限定範圍的座標
-            if CLLocation(latitude: tempCoordinate.latitude, longitude: tempCoordinate.longitude).distance(from: userLocation) <= UserLimit && self.myTextField != nil && self.myTextField.text!.isEmpty == false{
+            if CLLocation(latitude: tempCoordinate.latitude, longitude: tempCoordinate.longitude).distance(from: userLocation) <= UserLimit {
+                print("UPDATE")
                 tempAPIData.append(tempData)
                 
                 let (latitude, longitude) = self.fetchLatitudeAndLongitudeFromData(tempData)
