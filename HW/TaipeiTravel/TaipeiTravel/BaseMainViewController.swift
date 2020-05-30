@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 
+@available(iOS 13.0, *)
 class BaseMainViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, URLSessionDelegate, URLSessionDownloadDelegate {
     var fullSize :CGSize!
     var myUserDefaults :UserDefaults!
@@ -146,10 +147,13 @@ class BaseMainViewController: UIViewController, CLLocationManagerDelegate, UITab
         self.myTextField.text = ""
         self.myTextField.borderStyle = .roundedRect
         self.myTextField.keyboardType = .numberPad
+        
+        // Custom Done Cancle on number pad
+        self.myTextField.addDoneCancelToolbar(onDone: (target: self, action: #selector(updateUserLimit)))
+        
         self.myTextField.isHidden = false
         self.myTextField.clearButtonMode = .whileEditing
         self.myTextField.placeholder = "請輸入距離 (單位：公尺)"
-        self.view.addSubview(self.myTextField)
         
         // 隱藏環狀進度條
         myActivityIndicator.stopAnimating()
@@ -481,20 +485,12 @@ class BaseMainViewController: UIViewController, CLLocationManagerDelegate, UITab
     
 }
 
-// MARK:- UITextFieldDelegate
-extension BaseMainViewController: UITextFieldDelegate{
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        
-        print("End editing")
-        print(myTextField.text!)
-        
+// MARK: - USER Limit Update
+extension BaseMainViewController{
+    @objc func updateUserLimit () {
         if myTextField.text!.isEmpty == true{
             print("Empty editing")
+            self.apiData = self.apiDataAll
         }
         else {
             UserLimit = Double(myTextField.text!)!
@@ -524,17 +520,50 @@ extension BaseMainViewController: UITextFieldDelegate{
                 // 無定位權限 取得所有資料
                 self.apiData = self.apiDataAll
             }
-            // 將有限數量資料依照與使用者距離重新排序
-            self.fillIntoAPIDataForDistanceAndSort(self.apiData)
-            
-            // 更新 table
-            if let table = self.myTableView {
-                self.myActivityIndicator.startAnimating()
-                table.reloadData()
-                self.myActivityIndicator.stopAnimating()
-            }
         }
+        // 將有限數量資料依照與使用者距離重新排序
+        self.fillIntoAPIDataForDistanceAndSort(self.apiData)
         
+        // 更新 table
+        if let table = self.myTableView {
+            self.myActivityIndicator.startAnimating()
+            table.reloadData()
+            self.myActivityIndicator.stopAnimating()
+        }
+        self.view.endEditing(true)
     }
     
+}
+
+
+// MARK:- UITextFieldDelegate
+extension BaseMainViewController: UITextFieldDelegate{
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+}
+
+// MARK: - UITextField Extension
+extension UITextField {
+    func addDoneCancelToolbar(onDone: (target: Any, action: Selector)? = nil, onCancel: (target: Any, action: Selector)? = nil) {
+        let onCancel = onCancel ?? (target: self, action: #selector(cancelButtonTapped))
+        let onDone = onDone ?? (target: self, action: #selector(doneButtonTapped))
+
+        let toolbar: UIToolbar = UIToolbar()
+        toolbar.barStyle = .default
+        toolbar.items = [
+            UIBarButtonItem(title: "Cancel", style: .plain, target: onCancel.target, action: onCancel.action),
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil),
+            UIBarButtonItem(title: "Done", style: .done, target: onDone.target, action: onDone.action)
+        ]
+        toolbar.sizeToFit()
+
+        self.inputAccessoryView = toolbar
+    }
+
+    // Default actions:
+    @objc func doneButtonTapped() { self.resignFirstResponder() }
+    @objc func cancelButtonTapped() { self.resignFirstResponder() }
 }
