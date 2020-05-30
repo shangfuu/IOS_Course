@@ -9,7 +9,6 @@
 import UIKit
 import CoreLocation
 
-@available(iOS 13.0, *)
 class BaseMainViewController: UIViewController, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource, URLSessionDelegate, URLSessionDownloadDelegate {
     var fullSize :CGSize!
     var myUserDefaults :UserDefaults!
@@ -25,6 +24,7 @@ class BaseMainViewController: UIViewController, CLLocationManagerDelegate, UITab
     var apiDataAll :[AnyObject]!
     var apiData :[AnyObject]!
     var apiDataForDistance :[Coordinate]!
+    
     var myTextField : UITextField!
 
     // 超過多少距離才重新取得有限數量資料 (公尺)
@@ -71,6 +71,7 @@ class BaseMainViewController: UIViewController, CLLocationManagerDelegate, UITab
         myActivityIndicator.startAnimating()
         myActivityIndicator.hidesWhenStopped = true
         self.view.addSubview(myActivityIndicator)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -97,6 +98,7 @@ class BaseMainViewController: UIViewController, CLLocationManagerDelegate, UITab
             table.reloadData()
 
             myActivityIndicator.stopAnimating()
+
         }
     }
     
@@ -123,7 +125,7 @@ class BaseMainViewController: UIViewController, CLLocationManagerDelegate, UITab
         
     }
     
-    // MARK:- Add table View & TextField
+   // MARK:- Add table View & TextField
     func addTable(_ filePath :URL?) {
         if let path = filePath {
             self.jsonParse(path)
@@ -140,20 +142,20 @@ class BaseMainViewController: UIViewController, CLLocationManagerDelegate, UITab
         self.view.addSubview(self.myTableView)
         
         // 新增 TextField
-        let frame = CGRect(x: 10, y: 10, width: self.fullSize.width - 20, height: 30)
+        let frame = CGRect(x: 10, y: 10, width: self.fullSize.width - 20, height: 40)
         myTextField = UITextField(frame: frame)
+        print("ADD TXTFIEDL")
         self.myTextField.frame = frame
         self.myTextField.delegate = self
         self.myTextField.text = ""
         self.myTextField.borderStyle = .roundedRect
         self.myTextField.keyboardType = .numberPad
-        
         // Custom Done Cancle on number pad
         self.myTextField.addDoneCancelToolbar(onDone: (target: self, action: #selector(updateUserLimit)))
-        
         self.myTextField.isHidden = false
         self.myTextField.clearButtonMode = .whileEditing
         self.myTextField.placeholder = "請輸入距離 (單位：公尺)"
+        self.view.addSubview(myTextField)
         
         // 隱藏環狀進度條
         myActivityIndicator.stopAnimating()
@@ -404,7 +406,9 @@ class BaseMainViewController: UIViewController, CLLocationManagerDelegate, UITab
             
             index += 1
         }
+
         self.apiDataForDistance.sort(by: <)
+        
     }
     
     // 依據所有資料與使用者定位的距離 取得有限數量資料
@@ -429,9 +433,10 @@ class BaseMainViewController: UIViewController, CLLocationManagerDelegate, UITab
             
             // 超過限定距離才重新取得有限數量資料
             if userLocation.distance(from: recordLocation) > self.limitDistance {
-                
+
                 // 更新使用者附近地點座標
                 updateLimitDistance(userLocation: userLocation)
+                
                 
                 // 更新記錄的座標
                 myUserDefaults.set(userLatitude, forKey: self.fetchType + "RecordLatitude")
@@ -444,6 +449,7 @@ class BaseMainViewController: UIViewController, CLLocationManagerDelegate, UITab
             // 無定位權限 取得所有資料
             self.apiData = self.apiDataAll
         }
+
     }
     
     func refreshAPIData() {
@@ -456,6 +462,7 @@ class BaseMainViewController: UIViewController, CLLocationManagerDelegate, UITab
         
         // 將有限數量資料依照與使用者距離重新排序
         self.fillIntoAPIDataForDistanceAndSort(self.apiData)
+
     }
     
     // MARK: - Update UserLimit Distance
@@ -534,7 +541,6 @@ extension BaseMainViewController{
     }
     
 }
-
 
 // MARK:- UITextFieldDelegate
 extension BaseMainViewController: UITextFieldDelegate{

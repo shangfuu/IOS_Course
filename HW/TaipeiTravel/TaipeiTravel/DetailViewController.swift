@@ -42,7 +42,6 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         // 加入到畫面中
         self.view.addSubview(self.myTableView)
-        
     }
     
     
@@ -115,7 +114,7 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         var height = CGFloat(44.0)
         
         if (self.hasMap && indexPath.row >= 2) || (!self.hasMap && indexPath.row >= 1) {
-            height = 2.0 * height
+            height = 1.5 * height
         }
         
         if indexPath.row == self.selectedRowIndex {

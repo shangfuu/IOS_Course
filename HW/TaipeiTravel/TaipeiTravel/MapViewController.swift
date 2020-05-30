@@ -18,6 +18,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     var latitude :Double = 0.0
     var longitude :Double = 0.0
     var myMapView :MKMapView!
+    let objectAnnotation = MKPointAnnotation()
+    
+    var subtitle: String!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +31,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         latitude = info["latitude"] as? Double ?? 0.0
         longitude = info["longitude"] as? Double ?? 0.0
+        subtitle = info["address"] as? String ?? ""
         
         self.title = info["title"] as? String ?? "標題"
         
@@ -46,6 +50,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         // 允許縮放地圖
         myMapView.isZoomEnabled = true
         
+        
         // 地圖預設顯示的範圍大小 (數字越小越精確)
         let latDelta = 0.005
         let longDelta = 0.005
@@ -60,11 +65,35 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         self.view.addSubview(myMapView)
         
         // 建立一個地點圖示 (圖示預設為紅色大頭針)
-        let objectAnnotation = MKPointAnnotation()
-        objectAnnotation.coordinate = CLLocation(latitude: latitude, longitude: longitude).coordinate
-        objectAnnotation.title = self.title
-        myMapView.addAnnotation(objectAnnotation)
-        
+        self.objectAnnotation.coordinate = CLLocation(latitude: latitude, longitude: longitude).coordinate
+        self.objectAnnotation.title = self.title
+        self.objectAnnotation.subtitle = self.subtitle
+        myMapView.addAnnotation(self.objectAnnotation)
     }
 
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        print("Select PIN")
+        
+        let actionController = UIAlertController(title: nil, message: "選擇功能", preferredStyle: .actionSheet)
+        
+        let GPSAction = UIAlertAction(title: "導航", style: .default) { (action) in
+            // 初始化 MKPlacemark
+            let targetPlacemark = MKPlacemark(coordinate: self.objectAnnotation.coordinate)
+            // 透過 targetPlacemark 初始化一個 MKMapItem
+            let targetItem = MKMapItem(placemark: targetPlacemark)
+            // 使用當前使用者當前座標初始化 MKMapItem
+            let userMapItem = MKMapItem.forCurrentLocation()
+            // 建立導航路線的起點及終點 MKMapItem
+            let routes = [userMapItem,targetItem]
+            // 設定為開車模式
+            let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+            MKMapItem.openMaps(with: routes, launchOptions: options)
+        }
+        let cancleAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        actionController.addAction(GPSAction)
+        actionController.addAction(cancleAction)
+        
+        present(actionController, animated: true, completion: nil)
+    }
+    
 }
