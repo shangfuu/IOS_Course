@@ -2,9 +2,6 @@
 //  BaseMainViewController.swift
 //  TaipeiTravel
 //
-//  Created by joe feng on 2016/6/6.
-//  Copyright © 2016年 hsin. All rights reserved.
-//
 
 import UIKit
 import CoreLocation
@@ -446,7 +443,6 @@ class BaseMainViewController: UIViewController, CLLocationManagerDelegate, UITab
             // 超過限定距離才重新取得有限數量資料
             if userLocation.distance(from: recordLocation) > self.limitDistance {
                 
-                print("Refetch")
                 // 更新使用者附近地點座標
                 if self.myTextField != nil && self.myTextField.text!.isEmpty == true {
                     self.apiData = self.apiDataAll
@@ -495,7 +491,6 @@ class BaseMainViewController: UIViewController, CLLocationManagerDelegate, UITab
             
             // 只顯示更新後有在使用者限定範圍的座標
             if CLLocation(latitude: tempCoordinate.latitude, longitude: tempCoordinate.longitude).distance(from: userLocation) <= UserLimit {
-                print("UPDATE")
                 tempAPIData.append(tempData)
                 
                 let (latitude, longitude) = self.fetchLatitudeAndLongitudeFromData(tempData)

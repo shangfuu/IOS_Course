@@ -2,9 +2,6 @@
 //  InfoMainViewController.swift
 //  TaipeiTravel
 //
-//  Created by joe feng on 2016/6/6.
-//  Copyright © 2016年 hsin. All rights reserved.
-//
 
 import UIKit
 
@@ -40,7 +37,7 @@ class InfoMainViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     @objc func goFB() {
-        let requestUrl = URL(string: "https://www.facebook.com/swiftgogogo")
+        let requestUrl = URL(string: "https://www.ntust.edu.tw/home.php")
         UIApplication.shared.open(requestUrl!)
     }
 
@@ -54,7 +51,7 @@ class InfoMainViewController: UIViewController, UITableViewDelegate, UITableView
         UIApplication.shared.open(requestUrl!)
     }
 
-    
+
 // MARK: UITableViewDelegate methods
     
     // 必須實作的方法：每一組有幾個 cell
@@ -71,7 +68,7 @@ class InfoMainViewController: UIViewController, UITableViewDelegate, UITableView
             if indexPath.row == 0 {
                 let fbButton = UIButton(frame: CGRect(x: 15, y: 0, width: fullSize.width, height: 40))
                 fbButton.addTarget(self, action: #selector(InfoMainViewController.goFB), for: .touchUpInside)
-                fbButton.setTitle("在 Facebook 上與我們聯絡", for: .normal)
+                fbButton.setTitle("與我們聯絡", for: .normal)
                 fbButton.setTitleColor(UIColor.black, for: .normal)
                 fbButton.contentHorizontalAlignment = .left
                 cell.contentView.addSubview(fbButton)
@@ -93,7 +90,7 @@ class InfoMainViewController: UIViewController, UITableViewDelegate, UITableView
                 cell.contentView.addSubview(button)
             }
         } else if indexPath.section == 2 {
-            cell.textLabel?.text = "當開啟定位服務時，顯示資料僅會列出距離目前定位位置較近的地點。"
+            cell.textLabel?.text = "為了避免在台北突然肚子痛找不到廁所的尷尬狀況發生，本 APP 幫你們解決了這個問題。\n\n當開啟定位服務時，顯示資料會列出距離目前定位位置較近的地點，又或是透過輸入距離，只顯示距離內的地點。\n\n點擊地圖後，再點擊該大頭針一次，即可進行導航功能。"
             cell.textLabel?.numberOfLines = 0
             cell.textLabel?.lineBreakMode = .byWordWrapping
         }
@@ -129,7 +126,7 @@ class InfoMainViewController: UIViewController, UITableViewDelegate, UITableView
         var height = CGFloat(44.0)
         
         if indexPath.section == 2 {
-            height = 120.0
+            height = 250.0
         }
         
         return height
