@@ -140,7 +140,7 @@
 				TargetAttributes = {
 					81A8A43B1D054795005FA15C = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 42G68NKSB6;
+						DevelopmentTeam = 8BCC6X8752;
 						LastSwiftMigration = 1130;
 					};
 				};
@@ -312,14 +312,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
-				DEVELOPMENT_TEAM = 42G68NKSB6;
+				DEVELOPMENT_TEAM = 8BCC6X8752;
 				INFOPLIST_FILE = TaipeiTravel/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = B10615045.TaipeiTravel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -328,14 +329,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "";
-				DEVELOPMENT_TEAM = 42G68NKSB6;
+				DEVELOPMENT_TEAM = 8BCC6X8752;
 				INFOPLIST_FILE = TaipeiTravel/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = B10615045.TaipeiTravel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
